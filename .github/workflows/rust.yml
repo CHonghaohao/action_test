@@ -22,8 +22,8 @@ jobs:
       with:
         toolchain: nightly-2023-12-28  # 指定 Rust 版本，nightly-2023-12-28'
         override: true
-        components: rustfmt, clippy, rust-src, llvm-tools-preview, cargo-binutils
         target: aarch64-unknown-none
+        components: rustfmt, clippy, rust-src, llvm-tools-preview, cargo-binutils
 
     - name: 查看rustc版本
       run: rustc --version
