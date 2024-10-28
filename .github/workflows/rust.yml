@@ -42,7 +42,7 @@ jobs:
     - name: Set up QEMU
       uses: docker/setup-qemu-action@v3
     - name: QEMU Version
-      run: qemu-aarch64 --version
+      run: python --version
     
     - name: 查看所在目录
       run: pwd
