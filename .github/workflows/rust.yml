@@ -16,7 +16,14 @@ jobs:
 
     steps:
     - uses: actions/checkout@v4
-    
+
+    - name: Set up Rust
+      uses: actions-rs/toolchain@v1
+      with:
+        toolchain: nightly-2023-12-28  # 指定 Rust 版本，nightly-2023-12-28'
+        override: true
+        components: rustfmt, clippy
+
     - name: 查看rustc版本
       run: rustc --version
     - name: 查看cargo版本
@@ -24,6 +31,6 @@ jobs:
     - name: 查看所在目录
       run: pwd
     - name: 查看目录文件
-      run: ll
+      run: ls
     - name: 运行
       run: cargo run
