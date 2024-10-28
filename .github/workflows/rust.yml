@@ -1,4 +1,4 @@
-name: Rust
+name: Action测试
 
 on:
   push:
@@ -16,9 +16,11 @@ jobs:
 
     steps:
     - uses: actions/checkout@v4
-    - name: rustc version
+    - name: 查看rustc版本
       run: rustc --version
-    - name: cargo version
+    - name: 查看cargo版本
       run: cargo version
-    - name: run
+    - name: 查看所在目录
+      run: pwd
+    - name: 运行
       run: cargo run
