@@ -12,10 +12,11 @@ env:
 jobs:
   build:
 
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
 
     steps:
     - uses: actions/checkout@v4
+    
     - name: 查看rustc版本
       run: rustc --version
     - name: 查看cargo版本
