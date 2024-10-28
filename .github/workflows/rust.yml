@@ -35,10 +35,14 @@ jobs:
     
     - name: 查看target列表1
       run: rustup target list
-    - name: Install necessary components  
-      run: rustup target add aarch64-unknown-none
-    - name: 查看target列表2
-      run: rustup target list
+    # - name: Install necessary components  
+    #   run: rustup target add aarch64-unknown-none
+    # - name: 查看target列表2
+    #   run: rustup target list
+    - name: Set up QEMU
+      uses: docker/setup-qemu-action@v3
+    - name: QEMU Version
+      run: qemu-system-aarch64 --version
     
     - name: 查看所在目录
       run: pwd
