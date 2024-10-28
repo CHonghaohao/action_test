@@ -22,5 +22,7 @@ jobs:
       run: cargo version
     - name: 查看所在目录
       run: pwd
+    - name: 查看目录文件
+      run: ll
     - name: 运行
       run: cargo run
