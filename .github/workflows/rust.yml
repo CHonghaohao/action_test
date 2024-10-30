@@ -44,13 +44,15 @@ jobs:
     # - name: QEMU Version
     #   run: python --version
     - name: cd
-      run: cd ..
+      run: cd ../
     - name: pwd
       run: pwd
     - name: ls
       run: ls
     - name: wget
       run: wget  https://download.qemu.org/qemu-9.0.2.tar.xz
+    - name: cd qemu-9.0.2
+      run: cd qemu-9.0.2
     - name: tar
       run: tar xvJf qemu-9.0.2.tar.xz
     - name: ./configure
