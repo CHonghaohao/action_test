@@ -17,24 +17,24 @@ jobs:
     steps:
     - uses: actions/checkout@v4
 
-    - name: Set up Rust
-      uses: actions-rs/toolchain@v1
-      with:
-        toolchain: nightly-2023-12-28  # 指定 Rust 版本，nightly-2023-12-28'
-        override: true
-        target: aarch64-unknown-none
-        components: rustfmt, clippy, rust-src, llvm-tools-preview
+    # - name: Set up Rust
+    #   uses: actions-rs/toolchain@v1
+    #   with:
+    #     toolchain: nightly-2023-12-28  # 指定 Rust 版本，nightly-2023-12-28'
+    #     override: true
+    #     target: aarch64-unknown-none
+    #     components: rustfmt, clippy, rust-src, llvm-tools-preview
 
-    - name: Install cargo-binutils  
-      run: cargo install cargo-binutils
+    # - name: Install cargo-binutils  
+    #   run: cargo install cargo-binutils
 
-    - name: 查看rustc版本
-      run: rustc --version
-    - name: 查看cargo版本
-      run: cargo version
+    # - name: 查看rustc版本
+    #   run: rustc --version
+    # - name: 查看cargo版本
+    #   run: cargo version
     
-    - name: 查看target列表
-      run: rustup target list
+    # - name: 查看target列表
+    #   run: rustup target list
     # - name: Install necessary components  
     #   run: rustup target add aarch64-unknown-none
     # - name: 查看target列表2
@@ -44,9 +44,17 @@ jobs:
     # - name: QEMU Version
     #   run: python --version
     - name: 安装Qemu
-      run: sudo apt install qemu-system-aarch64
-    - name: QEMU Version
-      run: qemu-system-aarch64 --version
+      run: 
+        cd ..
+        pwd
+        ll
+        wget  https://download.qemu.org/qemu-9.0.2.tar.xz
+        tar xvJf qemu-9.0.2.tar.xz
+        ./configure --target-list=aarch64-softmmu --enable-kvm --enable-nettle --enable-user --enable-linux-user --enable-slirp --enable-debug
+        make -j$(nproc)
+        sudo make install
+        qemu-system-aarch64 --version
+
     
     - name: 查看所在目录
       run: pwd
