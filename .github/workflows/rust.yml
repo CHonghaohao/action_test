@@ -44,7 +44,7 @@ jobs:
     # - name: QEMU Version
     #   run: python --version
     - name: 安装Qemu
-      run: 
+      run: |
         cd ..
         pwd
         ll
