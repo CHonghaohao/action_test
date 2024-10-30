@@ -47,7 +47,7 @@ jobs:
       run: |
         cd ..
         pwd
-        ll
+        ls
         wget  https://download.qemu.org/qemu-9.0.2.tar.xz
         tar xvJf qemu-9.0.2.tar.xz
         ./configure --target-list=aarch64-softmmu --enable-kvm --enable-nettle --enable-user --enable-linux-user --enable-slirp --enable-debug
@@ -57,7 +57,7 @@ jobs:
 
     
     - name: 查看所在目录
-      run: pwd
+      run: cd action_test
     - name: 查看目录文件
       run: ls
     - name: 运行
