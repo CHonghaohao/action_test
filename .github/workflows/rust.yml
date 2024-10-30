@@ -44,9 +44,9 @@ jobs:
     # - name: QEMU Version
     #   run: python --version
     - name: 安装Qemu
-      run: apt install qemu-system-aarch64
+      run: sudo apt install qemu-system-aarch64
     - name: QEMU Version
-      run: sudo qemu-system-aarch64 --version
+      run: qemu-system-aarch64 --version
     
     - name: 查看所在目录
       run: pwd
