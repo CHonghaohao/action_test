@@ -43,17 +43,24 @@ jobs:
     #   uses: docker/setup-qemu-action@v3
     # - name: QEMU Version
     #   run: python --version
-    - name: 安装Qemu
-      run: |
-        cd ..
-        pwd
-        ls
-        wget  https://download.qemu.org/qemu-9.0.2.tar.xz
-        tar xvJf qemu-9.0.2.tar.xz
-        ./configure --target-list=aarch64-softmmu --enable-kvm --enable-nettle --enable-user --enable-linux-user --enable-slirp --enable-debug
-        make -j$(nproc)
-        sudo make install
-        qemu-system-aarch64 --version
+    - name: cd
+      run: cd ..
+    - name: pwd
+      run: pwd
+    - name: ls
+      run: ls
+    - name: wget
+      run: wget  https://download.qemu.org/qemu-9.0.2.tar.xz
+    - name: tar
+      run: tar xvJf qemu-9.0.2.tar.xz
+    - name: ./configure
+      run: ./configure --target-list=aarch64-softmmu --enable-kvm --enable-nettle --enable-user --enable-linux-user --enable-slirp --enable-debug
+    - name: make
+      run: make -j$(nproc)
+    - name: install
+      run: sudo make install
+    - name: version
+      run: qemu-system-aarch64 --version
 
     
     - name: 查看所在目录
