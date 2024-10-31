@@ -62,26 +62,28 @@ jobs:
     - name: tar
       run: tar xvJf qemu-9.0.2.tar.xz
 
-    - name: Change directory and list files
+    - name: install qemu
       run: |  
         cd ./qemu-9.0.2 
         ls -la  
-        shell: bash
+        ./configure --target-list=aarch64-softmmu --enable-kvm --enable-nettle --enable-user --enable-linux-user --enable-slirp --enable-debug
+        make -j$(nproc)
+        sudo make install
 
-    - name: ./configure
-      run: ./configure --target-list=aarch64-softmmu --enable-kvm --enable-nettle --enable-user --enable-linux-user --enable-slirp --enable-debug
+    # - name: ./configure
+    #   run: ./configure --target-list=aarch64-softmmu --enable-kvm --enable-nettle --enable-user --enable-linux-user --enable-slirp --enable-debug
 
-    - name: make
-      run: make -j$(nproc)
+    # - name: make
+    #   run: make -j$(nproc)
 
-    - name: install
-      run: sudo make install
+    # - name: install
+    #   run: sudo make install
 
     - name: version
       run: qemu-system-aarch64 --version
 
-    - name: 查看所在目录
-      run: cd action_test
+    # - name: 查看所在目录
+    #   run: cd action_test
 
     - name: 查看目录文件
       run: ls
