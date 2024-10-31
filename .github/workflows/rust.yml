@@ -60,6 +60,9 @@ jobs:
 
     - name: cd
       run: cd qemu-9.0.2
+    
+    - name: pwd
+      run: pwd  
 
     - name: ./configure
       run: ./configure --target-list=aarch64-softmmu --enable-kvm --enable-nettle --enable-user --enable-linux-user --enable-slirp --enable-debug
@@ -78,6 +81,6 @@ jobs:
 
     - name: 查看目录文件
       run: ls
-      
+
     - name: 运行
       run: cargo run
