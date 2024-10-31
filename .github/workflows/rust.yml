@@ -43,8 +43,6 @@ jobs:
     #   uses: docker/setup-qemu-action@v3
     # - name: QEMU Version
     #   run: python --version
-    - name: cd
-      run: cd ../
 
     - name: pwd
       run: pwd
@@ -56,16 +54,10 @@ jobs:
       run: wget  https://download.qemu.org/qemu-9.0.2.tar.xz
 
     - name: tar
-      run: tar xvJf qemu-9.0.2.tar.xz
-
-    - name: cd
-      run: cd qemu-9.0.2
-    
-    - name: pwd
-      run: pwd  
+      run: tar xvJf qemu-9.0.2.tar.xz  
 
     - name: ./configure
-      run: ./configure --target-list=aarch64-softmmu --enable-kvm --enable-nettle --enable-user --enable-linux-user --enable-slirp --enable-debug
+      run: ./qemu-9.0.2/configure --target-list=aarch64-softmmu --enable-kvm --enable-nettle --enable-user --enable-linux-user --enable-slirp --enable-debug
 
     - name: make
       run: make -j$(nproc)
