@@ -50,6 +50,8 @@ jobs:
     - name: ls
       run: ls
 
+    - name: install
+      run: sudo apt install python3-venv ninja-build pkg-config python3-pip libglib2.0-dev nettle-dev libpixman-1-dev meson git flex bison libslirp-dev
     - name: wget
       run: wget  https://download.qemu.org/qemu-9.0.2.tar.xz
 
