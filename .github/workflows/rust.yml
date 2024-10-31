@@ -60,10 +60,16 @@ jobs:
       run: wget  https://download.qemu.org/qemu-9.0.2.tar.xz
 
     - name: tar
-      run: tar xvJf qemu-9.0.2.tar.xz  
+      run: tar xvJf qemu-9.0.2.tar.xz
+
+    - name: Change directory and list files
+      run: |  
+        cd ./qemu-9.0.2 
+        ls -la  
+        shell: bash
 
     - name: ./configure
-      run: ./qemu-9.0.2/configure --target-list=aarch64-softmmu --enable-kvm --enable-nettle --enable-user --enable-linux-user --enable-slirp --enable-debug
+      run: ./configure --target-list=aarch64-softmmu --enable-kvm --enable-nettle --enable-user --enable-linux-user --enable-slirp --enable-debug
 
     - name: make
       run: make -j$(nproc)
